@@ -6,20 +6,32 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css"> -->
 </head>
 <body>
-    <nav id="desktop-nav">
-        <div class = "logo">Biraj Kharel</div>
-        <div>
-            <ul class = "nav-links"> 
-                <li> <a href="#about">About</a></li>
-                <li> <a href="#skills">Skills</a></li>
-                <li> <a href="#experience">Experience</a></li>
-                <li> <a href="#projects">Project</a></li>
-                <li> <a href="#contact">Contact</a></li>
-            </ul> 
-        </div>
-    </nav>
+  <nav id="desktop-nav">
+    <div class="logo">Biraj Kharel</div>
+    <div>
+      <ul class="nav-links"> 
+        <li class="dropdown-parent"> 
+          <a href="#about">
+            About 
+            <span class="dropdown-icon"></span>
+          </a>
+          <ul class="drop-down">
+            <li><a href="certifications.html">Certifications</a></li>
+            <!-- <li><a href="experience.html">Experience</a></li> -->
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </li>
+        <li><a href="#skills"></i> </i>Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Project</a></li>
+        <li><a href="#blogs">Blogs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul> 
+    </div>
+  </nav>
     <nav id="hamburger-nav">
         <div class="logo">Biraj Kharel</div>
         <div class="hamburger-menu">
@@ -28,17 +40,18 @@
             <span></span>
             <span></span>
           </div>
-          <div class="menu-links">
+          <ul class="menu-links">
             <li><a href="#about" onclick="toggleMenu()">About</a></li>
             <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
             <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+            <li><a href="#blogs" onclick="toggleMenu()">Blogs</a></li>
             <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-          </div>
+          </ul>
         </div>
     </nav>
     <section id = "profile">
         <div class = "section__pic-container">
-            <img src="./assets/IMG_Squared.png" alt="Biraj Kharel Profile Picture">
+            <img src="./assets/Img-circle.png" alt="Biraj Kharel Profile Picture">
         </div>
         <div class="section__text">
             <p class="section__text__p1">Hello, I'm</p>
@@ -88,7 +101,7 @@
                   class="icon"
                 />
                 <h3>Experience</h3>
-                <p>2 years <br />Reserch Engineer</p>
+                <p>2 years <br />Research Engineer</p>
               </div>
               <div class="details-container">
                 <img
@@ -183,7 +196,7 @@
                 <article>
                   <img
                     src="./assets/checkmark.png"
-                    alt="Sills icon"
+                    alt="Skills icon"
                     class="icon"
                   />
                   <div>
@@ -369,12 +382,12 @@
        <!-- Project Card 5: IC to Electric Conversion -->
        <div class="details-container color-container">
         <div class="article-container">
-          <img src="./assets/typical ev architecture.jpg" alt="IC to Electric Conversion" class="project-img">
+          <img src="./assets/mind blown.jpg" alt="IC to Electric Conversion" class="project-img">
         </div>
-        <h2 class="project-title">IC to Electric Conversion</h2>
+        <h2 class="project-title">Explore more works I have done</h2>
         <div class="btn-container">
-          <button class="btn btn-color-2 project-btn" onclick="window.open('./projects/ic_to_electric.html', '_blank')">
-            Read More...</button>
+          <button class="btn btn-color-2 project-btn" onclick="window.open('./projects/project main.html', '_blank')">
+            Lets GO...</button>
         </div>
       </div>
 
