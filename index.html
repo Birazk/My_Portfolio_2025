@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
+    <script type="text/javascript" src="./script.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css"> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <nav id="desktop-nav">
     <div class="logo">Biraj Kharel</div>
     <div>
       <ul class="nav-links"> 
-        <li class="dropdown-parent"> 
-          <a href="#about">
-            About 
-            <span class="dropdown-icon"></span>
-          </a>
+        <li class="dropdown-parent"><a href="#about">About<span class="dropdown-icon"></span></a>
           <ul class="drop-down">
             <li><a href="certifications.html">Certifications</a></li>
             <!-- <li><a href="experience.html">Experience</a></li> -->
@@ -26,8 +25,8 @@
         </li>
         <li><a href="#skills"></i> </i>Skills</a></li>
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Project</a></li>
-        <li><a href="#blogs">Blogs</a></li>
+        <li><a href="projects/1 project main.html">Workbench</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul> 
     </div>
@@ -40,13 +39,14 @@
             <span></span>
             <span></span>
           </div>
-          <ul class="menu-links">
+          <div class="menu-links">
             <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#skills"onclick="toggleMenu()">Skills</a></li>
             <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
             <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-            <li><a href="#blogs" onclick="toggleMenu()">Blogs</a></li>
+            <li><a href="#blogs" onclick="toggleMenu()">Gallery</a></li>
             <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-          </ul>
+          </div>
         </div>
     </nav>
     <section id = "profile">
@@ -264,7 +264,7 @@
           onclick="location.href='./#projects'"
         />
       </section>
-      <section id="experience" class="timeline-section">
+    <section id="experience" class="timeline-section">
         <p class="section__text__p1">Explore My</p>
         <h1 class="title">Experience</h1>
         <div class="timeline">
@@ -327,79 +327,7 @@
           onclick="location.href='./#projects'"
         />
       </section>
-      <section id="projects">
-        <!-- Projects Section Header -->
-    <p class="section__text__p1">Browse My Recent</p>
-    <h1 class="title">Works and Projects</h1>
-    
-    <!-- Projects Overview Grid -->
-    <div class="experience-details-container">
-      <div class="about-containers">
-      
-        <!-- Project Card 1: Energy Consumption & Range Detection -->
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/Corelation .png" alt="Corelation" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title">Energy Consumption & Range Detection</h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" 
-              onclick="window.open('https://iopscience.iop.org/article/10.1088/1755-1315/1385/1/012024')">
-              Read More...
-            </button>
-          </div>
-        </div>
-        
-        <!-- Project Card 2: Vehicle Crash Analysis -->
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/Crash Analysis.png" alt="Crash Analysis" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title">Vehicle Frontal Crash Analysis</h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn"
-              onclick="window.open('./projects/crash_analysis.html', '_blank')">
-              Read More...
-            </button>
-          </div>
-        </div>
-        
-        <!-- Project Card 3: Vehicle Range Calculator Web App -->
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/Project 1.png" alt="Range Calculator" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title">Vehicle Range Calculator Web App</h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn"
-              onclick="window.open('./projects/range_calculator.html', '_blank')">
-              Read More...
-            </button>
-          </div>
-        </div>
-      
-        
-       <!-- Project Card 5: IC to Electric Conversion -->
-       <div class="details-container color-container">
-        <div class="article-container">
-          <img src="./assets/mind blown.jpg" alt="IC to Electric Conversion" class="project-img">
-        </div>
-        <h2 class="project-title">Explore more works I have done</h2>
-        <div class="btn-container">
-          <button class="btn btn-color-2 project-btn" onclick="window.open('./projects/project main.html', '_blank')">
-            Lets GO...</button>
-        </div>
-      </div>
-
-     
-
-      </div>
-    </div>
-    
-    <!-- Arrow Icon -->
-    <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
-      </section>
-      <section id="contact">
+    <section id="contact">
         <p class="section__text__p1">Get in Touch</p>
         <h1 class="title">Contact Me</h1>
         <div class="contact-info-upper-container">
@@ -420,7 +348,7 @@
             <p><a href="https://www.linkedin.com/in/birajkharel">LinkedIn</a></p>
           </div>
         </div>
-    </section> 
+      </section> 
     <footer>
         <nav>
           <div class="nav-links-container">
