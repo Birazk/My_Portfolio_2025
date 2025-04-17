@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gear Design Tool Documentation</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+      padding: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1, h2, h3 {
+      color: #222;
+    }
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; margin-top: 40px; }
+    h3 { font-size: 22px; margin-top: 30px; }
+    p, li {
+      font-size: 16px;
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    .reference {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .external-link 
+    { display: inline-block; 
+        margin-top: 20px; 
+        background: #222; color: #fff; 
+        padding: 10px 20px; border-radius: 
+        5px; text-decoration: none; 
+        transition: background 0.3s ease; 
+    }
+
+    .external-link:hover { 
+        background: #444; 
+    }
+
+    footer {
+        text-align: center; 
+        font-size: 14px; 
+        color: #777; 
+        margin-top: 50px; 
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>Gear Design Tool Documentation</h1>
+  <img src="../assets/Design tool pic.png" alt="Types of Gears Diagram">
+  <p>This documentation provides a comprehensive overview of the mechanical gear design tool created in Excel. The tool allows users to calculate key parameters for various types of gears and keys based on fundamental mechanical engineering principles. It is designed to be accessible for both engineering professionals and laypersons interested in learning more about gear systems.</p>
+
+  <h2>Introduction</h2>
+  <p>Gears are mechanical devices used to transmit torque and rotational motion between machine components. They are essential in power transmission systems, automotive systems, robotics, and industrial machinery. This Excel-based design tool provides a user-friendly interface for calculating dimensions, stresses, and efficiency of several gear types, including spur gears, helical gears, bevel gears, worm gears, and key connections. By inputting basic parameters such as material strength, power, and gear dimensions, users can evaluate gear designs according to established mechanical design standards.</p>
+
+  <h2>General Parameters and Inputs</h2>
+  <p>Before delving into individual gear types, several inputs are common across all modules:</p>
+  <ul>
+    <li><strong>Material</strong>: The gear material significantly affects design performance (e.g., steel, bronze, cast iron).</li>
+    <li><strong>Module (m)</strong>: The pitch diameter divided by the number of teeth, influencing gear size and strength.</li>
+    <li><strong>Number of Teeth (Z)</strong>: Affects gear ratio and engagement.</li>
+    <li><strong>Pressure Angle (α)</strong>: Commonly 20°, influencing contact force direction and gear strength.</li>
+    <li><strong>Face Width (b)</strong>: Wider faces increase load capacity.</li>
+    <li><strong>Rotational Speed and Power</strong>: Key to calculating transmitted torque and load.</li>
+  </ul>
+
+  <h2>Spur Gears</h2>
+  <p>Spur gears have straight teeth parallel to the axis and are used for transmitting motion between parallel shafts. They offer high efficiency but are relatively noisy due to sudden tooth engagement.</p>
+  <ul>
+    <li>Pitch Diameter and Torque derived from power and RPM.</li>
+    <li>Bending stress evaluated using the Lewis equation.</li>
+    <li>Simple to manufacture and analyze.</li>
+  </ul>
+
+  <h2>Helical Gears</h2>
+  <p>Helical gears feature angled teeth, offering smoother, quieter operation and better load distribution. They can transmit power between parallel or crossed shafts.</p>
+  <ul>
+    <li>Includes effects of helix angle (β) on forces.</li>
+    <li>Requires thrust-bearing due to axial force.</li>
+    <li>Effective module and width adjusted based on angle.</li>
+  </ul>
+
+  <h2>Bevel Gears</h2>
+  <p>Bevel gears are used for shafts intersecting usually at 90°. They allow directional change in drive with compact geometry.</p>
+  <ul>
+    <li>Tooth geometry based on pitch cone angles.</li>
+    <li>Require precision in alignment.</li>
+    <li>Used in differential drives and compact gearboxes.</li>
+  </ul>
+
+  <h2>Worm Gears</h2>
+  <p>Worm gears are ideal for high reduction ratios and non-parallel shafts. They consist of a screw-like worm and a worm wheel.</p>
+  <ul>
+    <li>Commonly used in elevators, conveyors, and tuning instruments.</li>
+    <li>Prone to low efficiency due to sliding contact.</li>
+    <li>May provide self-locking features.</li>
+  </ul>
+
+  <h2>Key Design</h2>
+  <p>Keys transmit torque between rotating machine elements such as gears and shafts.</p>
+  <ul>
+    <li>Dimensioned per DIN 6885 standards.</li>
+    <li>Shear and bearing stress calculated to prevent failure.</li>
+    <li>Essential for safe and efficient power transmission.</li>
+  </ul>
+
+  <h2>References and Standards</h2>
+  <ol class="reference">
+    <li>(1) ISO 6336 – Load capacity calculation of spur and helical gears</li>
+    <li>(2) AGMA 2001-D04 – Fundamental rating factors and calculation methods</li>
+    <li>(3) ISO 23509 – Geometry of bevel gears</li>
+    <li>(4) DIN 6885 – Standard dimensions for keys</li>
+    <li>(5) Shigley's Mechanical Engineering Design – Standard textbook reference</li>
+    <li>(6) Wikipedia and online tools for general understanding and formulae</li>
+  </ol>
+
+  <h2>Conclusion</h2>
+  <p>This Excel tool supports detailed mechanical design calculations, empowering users to design gears for real-world use. While ideal for educational purposes, it is also a valuable early-stage design tool in engineering projects. Verification using software like SOLIDWORKS or simulation platforms like ANSYS is advised for critical applications.</p>
+    
+  <!-- <a class="download-link" href="../assets/Enhanced_Gear_Design_Tool.xlsx" download>Download Excel Tool</a> -->
+
+  <a class="external-link" href="./1 project main.html" target="_blank">Back to the projects</a>
+    
+<footer>
+      &copy; 2025 Advanced Crash Analysis Project. All rights reserved.
+</footer>
+</body>
+</html>
