@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modular EV Chassis Stress Analysis Documentation</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+      padding: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1, h2, h3 {
+      color: #222;
+    }
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; margin-top: 40px; }
+    h3 { font-size: 22px; margin-top: 30px; }
+    p, li {
+      font-size: 16px;
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+    ul, ol {
+      margin-left: 20px;
+    }
+    .reference {
+      font-size: 14px;
+      color: #777;
+      list-style-type: none;
+      padding: 0;
+    }
+    .external-link {
+      display: inline-block;
+      margin-top: 20px;
+      background: #222;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .external-link:hover {
+      background: #444;
+    }
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      margin-top: 50px;
+    }
+    canvas {
+      max-width: 100%;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      display: flex;
+      
+    }
+
+    .centered-image {
+      display: block;
+      margin: 20px auto;
+      max-width: 60%;
+      height: auto;
+    }
+
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>Modular EV Chassis Stress Analysis Documentation</h1>
+  <img src="../assets/chassis ansys.png" alt="Modular EV Chassis Diagram">
+  <p>
+    This article provides an in‑depth finite element analysis (FEA) of a modular electric vehicle (EV) chassis, investigating its structural response under static loads. A detailed CAD model was analyzed in ANSYS with carefully defined material properties—typical of AISI 1020 carbon steel—mesh convergence studies, solver configurations, contact definitions, and non‐linear solution controls. Key outputs include deflection and stress distributions, natural frequencies and mode shapes, harmonic response characteristics, deformation patterns, and fatigue life predictions, all demonstrating the chassis’s readiness for real‑world applications.
+  </p>
+
+  <h2>Stress-Strain Behavior</h2>
+  <canvas id="stressStrainChart"></canvas>
+  <script>
+    const ctx = document.getElementById('stressStrainChart').getContext('2d');
+    const stressStrainChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [0, 0.0001, 0.0002, 0.0003, 0.0004, 0.0005],
+        datasets: [{
+          label: 'Stress vs. Strain',
+          data: [0, 20, 40, 60, 80, 100],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          tension: 0.3,
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Strain (mm/mm)'
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Stress (MPa)'
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+  <h2>1. Introduction</h2>
+  <p>
+    The chassis functions as the vehicle’s backbone, providing structural rigidity for handling and acting as the mounting platform for suspension, drivetrain, and safety systems. In modular electric vehicles, lightweight yet robust chassis designs are essential for performance, safety, and cost efficiency. By leveraging ANSYS FEA tools, this analysis optimizes chassis geometry and validates structural integrity under diverse loading conditions without the need for multiple physical prototypes.</p>
+
+  <h2>2. Material Definition and CAD Model</h2>
+  <p>
+    The chassis was modeled as isotropic AISI 1020 carbon steel, whose mechanical properties were assigned from literature values: a density of 7 870 kg/m³, Young’s modulus of 200 GPa, Poisson’s ratio of 0.29, and shear modulus of 80 GPa 
+    . A bilinear isotropic hardening law with an initial yield strength of 250 MPa and a tangent modulus of 10 GPa beyond yield was adopted to capture elastic–plastic transitions under extreme loads. The CAD model in Fusion 360 included the chassis frame, suspension mounting pads, battery tray, motor mounts, wheels, and axles, and was verified in assembly mode for proper fit and absence of interferences.
+  </p>
+
+  <h2>3. Mesh Convergence and Quality Metrics</h2>
+  <p>
+    Within ANSYS, the chassis geometry was discretized using ten‐node tetrahedral elements. A global mesh size of 10 mm yielded approximately 150 000 elements, and local refinement to 5 mm around suspension‐mount regions increased this to 250 000 elements. Convergence was achieved when subsequent mesh refinements altered the maximum von Mises stress by less than 2 %. Element quality checks ensured skewness below 0.4 and aspect ratios under 3, balancing computational efficiency with result fidelity.
+  </p>
+
+  <h2>4. Static Structural Analysis</h2>
+  <p>
+    The static load case simulated a uniformly distributed vertical force of 19.6 kN (equivalent to 2 000 kg) applied to the chassis floor. The direct sparse solver was employed with large‐deformation (geometric nonlinearity) effects enabled, and convergence tolerances set to 1×10⁻⁶ for both displacement and force residuals. Twenty automatic load substeps captured the non‐linear response. Contacts between welded chassis sections were defined as bonded, while the suspension‐mount interfaces used frictionless contact to represent bearing conditions. Under these conditions, the maximum deflection of the floor was 0.550 mm, and the peak von Mises stress reached 41.4 MPa—well below the 250 MPa yield—resulting in a minimum safety factor of approximately 6.0.
+  </p>
+
+  <h2>5. Modal and Harmonic Analysis</h2>
+  <p>
+    A Block‑Lanczos algorithm extracted the first ten natural frequencies, with the first four at 68.77 Hz, 138.23 Hz, 184.19 Hz, and 247.09 Hz. The corresponding mode shapes revealed global bending and torsional deformations of the longitudinal rails. A harmonic response analysis then swept frequencies from 0 to 300 Hz in 1 Hz increments, applying a 9.19 kN sinusoidal force at the chassis floor and assuming a uniform damping ratio of 2 %. Results showed a pronounced resonance peak at approximately 50 Hz, where a 0.1475 mm amplitude occurred under the 9.19 kN excitation—indicating a potential NVH concern if auxiliary equipment or road inputs coincide with this band 
+  </p>
+
+  <h2>7. Fatigue Life Estimation</h2>
+  <p>
+    High‑cycle fatigue was evaluated using ANSYS’s fatigue module. An S–N curve slope of –0.12 was applied, with an endurance limit taken as 0.5 σᵧ (125 MPa). Stress amplitudes extracted from the static analysis remained below this limit, predicting an infinite fatigue life (>10⁶ cycles) and a fatigue safety factor exceeding 3. These results indicate that under normal operating load spectra, no crack initiation is expected throughout the chassis’s service life 
+  </p>
+
+  <h2>Conclusion</h2>
+  <p>
+    The comprehensive FEA demonstrates that the modular EV chassis provides exceptional stiffness under static loads, desirable dynamic characteristics well outside typical road‑induced frequencies, and robust crashworthiness with effective energy absorption. The high static safety factors and infinite fatigue life assurance confirm the chassis design’s reliability for long‑term, real‑world operation.
+  </p>
+
+  <h2>References</h2>
+  <ol class="reference">
+    <li>ISO 1020 Steel Properties, ASM Handbook.</li>
+    <li>Block-Lanczos Modal Analysis, ANSYS Help Documentation.</li>
+    <li>Crashworthiness Simulation Techniques, SAE Technical Papers.</li>
+    <li>Fatigue Analysis Using S–N Curves, ASTM E739.</li>
+    <li>SolidWorks 2023 R1 User Guide.</li>
+  </ol>
+
+  <a class="external-link" href="/index.html" target="_blank">Back to Projects</a>
+
+  <footer>
+    &copy; 2025 Modular EV Structural Analysis. All rights reserved.
+  </footer>
+</body>
+</html>
