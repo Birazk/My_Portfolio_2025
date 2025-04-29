@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Portfolio of Biraj Kharel, Mechanical Engineer passionate about EVs, modular vehicles, and sustainable systems.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 </head>
 <body>
   <nav id="desktop-nav">
@@ -76,58 +77,60 @@
                     src="./assets/github.png"
                     alt="My Github profile"
                     class="icon"
-                    onclick="location.href='https://github.com/'"
+                    onclick="location.href='https://github.com/birajkharel'"
                  />
             </div>
         </div>
     </section>
     <section id="about">
-        <p class="section__text__p1">Get To Know More</p>
-        <h1 class="title">About My Journey</h1>
-        <div class="section-container">
-          <div class="section__pic-container">
-            <img
-              src="./assets/jhanda_pic.png"
-              alt="Profile picture"
-              class="about-pic"
-            />
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About My Journey</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <div class="details-container:hover"></div>
+          <img
+            src="./assets/jhanda_pic.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Experience</h3>
+              <p>2 years <br />Research Engineer</p>
+            </div>
+    
+            <!-- Replaced Education with Academic Timeline -->
+            <a href="timeline.html" class="details-link">
+              <div class="details-container">
+                <h3>Academic Timeline</h3>
+                <p>Explore my academic journey<br />Click to view timeline →</p>
+              </div>
+            </a>
           </div>
-          <div class="about-details-container">
-            <div class="about-containers">
-              <div class="details-container">
-                <img
-                  src="./assets/experience.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <h3>Experience</h3>
-                <p>2 years <br />Research Engineer</p>
-              </div>
-              <div class="details-container">
-                <img
-                  src="./assets/education.png"
-                  alt="Education icon"
-                  class="icon"
-                />
-                <h3>Education</h3>
-                <p>B.E. in Mechanical Engineering<br />Kathmandu University</p>
-              </div>
-            </div>
-            <div class="text-container">
-              <p>
-                I’m a mechanical engineer and data analyst passionate about sustainable energy systems, electric vehicle conversion, 
-                and data-driven design. I specialize in bridging hardware innovation with software intelligence to build smart, resilient mobility solutions. 
-                I’ve worked on modular vehicle design, ICE-to-EV conversion, battery thermal modeling, and predictive analytics for real-world energy optimization.
-              </p>
-            </div>
+    
+          <div class="text-container">
+            <p>
+              I’m a mechanical engineer and data analyst passionate about sustainable energy systems, electric vehicle conversion, 
+              and data-driven design. I specialize in bridging hardware innovation with software intelligence to build smart, resilient mobility solutions. 
+              I’ve worked on modular vehicle design, ICE-to-EV conversion, battery thermal modeling, and predictive analytics for real-world energy optimization.
+            </p>
           </div>
         </div>
-        <img
-          src="./assets/arrow.png"
-          alt="Arrow icon"
-          class="icon arrow"
-          onclick="location.href='./#experience'"
-        />
+      </div>
+    
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#experience'"
+      />
     </section>
     <section id="skills">
         <p class="section__text__p1">Get to know my</p>
@@ -167,7 +170,7 @@
                     class="icon"
                   />
                   <div>
-                    <h3>MATALB, Simulink</h3>
+                    <h3>MATLAB, Simulink</h3>
                     <p>Intermediate</p>
                   </div>
                 </article>
@@ -209,6 +212,7 @@
             <div class="details-container">
               <h2 class="skills-sub-title">Data Analyst Skill Sets</h2>
               <div class="article-container">
+                
                 <article>
                   <img
                     src="./assets/checkmark.png"
@@ -220,6 +224,7 @@
                     <p>Intermediate</p>
                   </div>
                 </article>
+
                 <article>
                   <img
                     src="./assets/checkmark.png"
