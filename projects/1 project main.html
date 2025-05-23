@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biraj Kharel | Projects & Works</title>
+  <style>
+    /* --- Minimalist Reset & Base Styles --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #333333;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* --- Header --- */
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    header h1 {
+      font-size: 2.2rem; /* Slightly smaller */
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+    header p {
+      font-size: 1rem;
+      color: #7f8c8d;
+    }
+
+    /* --- Filters --- */
+    .filters {
+      margin: 0 auto 30px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    select#filterType {
+      padding: 10px 15px;
+      font-size: 0.95rem;
+      border: 1px solid #ddd; /* Lighter border */
+      border-radius: 6px;
+      background: #fdfdfd;
+      min-width: 220px;
+      appearance: none; /* Basic custom arrow appearance */
+      background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007AFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 10px 10px;
+      cursor: pointer;
+    }
+
+    /* --- Project Grid --- */
+    .experience-details-container { /* This is the project grid */
+      max-width: 1100px; /* Slightly narrower */
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); /* Slightly smaller min */
+      gap: 25px; /* Slightly smaller gap */
+    }
+
+    /* --- Project Cards (.details-container) --- */
+    .details-container {
+      background: #ffffff;
+      border-radius: 8px; /* Less rounded */
+      overflow: hidden;
+      border: 1px solid #eaeaea; /* Subtle border */
+      box-shadow: none; /* Removed default shadow for minimalism */
+      transition: border-color 0.3s ease, transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .details-container:hover {
+      border-color: #007aff; /* Highlight color on hover */
+      transform: translateY(-3px);
+    }
+    .article-container img {
+      width: 100%;
+      height: 170px; /* Adjusted height */
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid #eaeaea; /* Separator */
+    }
+    .project-content { /* New wrapper for title and button */
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; /* Allows button container to be pushed down */
+    }
+    .project-title {
+      font-size: 1.1rem;
+      font-weight: 600; /* Medium weight */
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    .btn-container {
+      margin-top: auto; /* Pushes button to bottom of project-content */
+      padding-top: 10px; /* Space above button */
+    }
+
+    /* --- Buttons --- */
+    .btn {
+      padding: 9px 16px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      background-color: #007aff; /* Primary action color */
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+      letter-spacing: 0.3px;
+    }
+    .btn:hover {
+      background-color: #0056b3; /* Darker shade for hover */
+      transform: translateY(-1px);
+    }
+    .btn.btn-secondary { /* For back buttons or less prominent actions */
+      background-color: #f0f0f0;
+      color: #555;
+      border: 1px solid #ddd;
+    }
+    .btn.btn-secondary:hover {
+      background-color: #e0e0e0;
+      border-color: #ccc;
+      color: #333;
+    }
+    .btn.btn-full-width {
+        display: block;
+        width: 100%;
+    }
+
+
+    /* --- Project Detail View --- */
+    .project-detail-section {
+      max-width: 800px;
+      margin: 20px auto; /* Give some space when it appears */
+      padding: 25px;
+      background: #ffffff;
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+    }
+    #projectDetailContent img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain; /* Use contain to see whole image, or cover */
+      border-radius: 6px;
+      margin-bottom: 20px;
+      border: 1px solid #f0f0f0;
+    }
+    #projectDetailContent h2 {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+    #projectDetailContent p {
+      font-size: 1rem;
+      color: #555555;
+      margin-bottom: 20px;
+      white-space: pre-line; /* Respect newlines in summary */
+    }
+    #projectDetailContent .detail-links a.btn {
+        margin-right: 10px;
+        margin-bottom: 10px; /* For stacking on small screens */
+    }
+    #backToProjectsBtn {
+        margin-bottom: 25px;
+    }
+
+
+    /* --- Footer & Global Back Button --- */
+    .global-back-button-container {
+      text-align: center;
+      margin: 40px 0 30px;
+    }
+    footer {
+      text-align: center;
+      margin-top: auto; /* Pushes footer to the bottom */
+      font-size: 0.8rem;
+      color: #aaaaaa;
+      padding: 25px 20px;
+      border-top: 1px solid #f0f0f0; /* Subtle top border */
+    }
+
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 15px;
+      }
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
+      select#filterType {
+        width: 100%;
+        max-width: 280px; /* Limit width on mobile for select */
+      }
+      .experience-details-container {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 20px;
+      }
+      .project-detail-section {
+        padding: 20px;
+        margin: 20px 0; /* Full width on mobile */
+      }
+      #projectDetailContent h2 {
+          font-size: 1.5rem;
+      }
+      #projectDetailContent p {
+          font-size: 0.95rem;
+      }
+    }
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      .btn { /* Slightly smaller buttons on very small screens */
+        padding: 8px 14px;
+        font-size: 0.8rem;
+      }
+      #projectDetailContent .detail-links a.btn { /* Ensure buttons stack cleanly */
+        display: block;
+        width: 100%;
+        margin-right: 0;
+      }
+       #projectDetailContent .detail-links a.btn:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>💡 Projects & Works</h1>
+  <p>Exploring Ideas, Creating Impact</p>
+</header>
+
+<div class="filters">
+  <select id="filterType">
+    <option value="">All Projects</option>
+    <option value="simulation">Engineering Simulation</option>
+    <option value="data analysis">Data Analytics</option>
+  </select>
+</div>
+
+<!-- Project Grid (Initially Visible) -->
+<section class="experience-details-container" id="projectGrid">
+  <!-- Project cards will be dynamically populated or use data-attributes -->
+  <!-- Example of how one card would look with data-project-id -->
+  <!-- Card 1 -->
+  <div class="details-container" data-type="data analysis" data-project-id="energyConsumption">
+    <div class="article-container">
+      <img src="../assets/Corelation .png" alt="Energy Consumption & Range Detection">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Energy Consumption & Range Detection</h2>
+      <div class="btn-container">
+        <button class="btn btn-full-width btn-view-details">View Details</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="details-container" data-type="simulation" data-project-id="crashAnalysis">
+    <div class="article-container">
+      <img src="../assets/Crash Analysis.png" alt="Vehicle Crash Analysis">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Vehicle Frontal Crash Analysis</h2>
+      <div class="btn-container">
+        <button class="btn btn-full-width btn-view-details">View Details</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="details-container" data-type="data analysis" data-project-id="rangeCalculator">
+    <div class="article-container">
+      <img src="../assets/Project 1.png" alt="Vehicle Range Calculator">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Vehicle Range Calculator Web App</h2>
+      <div class="btn-container">
+        <button class="btn btn-full-width btn-view-details">View Details</button>
+      </div>
+    </div>
+  </div>
+
+   <!-- Card 4 -->
+  <div class="details-container" data-type="simulation" data-project-id="evConversion">
+    <div class="article-container">
+      <img src="../assets/typical ev architecture.jpg" alt="EV Conversion project">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">EV Conversion project</h2>
+      <div class="btn-container">
+        <button class="btn btn-full-width btn-view-details">View Details</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="details-container" data-type="simulation" data-project-id="batteryThermal">
+    <div class="article-container">
+      <img src="../assets/Battery_Thermal_Management_Figure1--550x392.jpg" alt="Battery Thermal Management">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Battery Thermal Management Simulation</h2>
+      <div class="btn-container">
+        <button class="btn btn-full-width btn-view-details">View Details</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="details-container" data-type="simulation" data-project-id="chassisAnalysis">
+    <div class="article-container">
+      <img src="../assets/Chassis.png" alt="Chassis Analysis">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Structural Analysis on Chassis</h2>
+      <div class="btn-container">
+        <button class="btn btn-full-width btn-view-details">View Details</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="details-container" data-type="data analysis" data-project-id="gearDesign">
+    <div class="article-container">
+      <img src="../assets/Gear.png" alt="Gear Design Tool">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Gear Design Tool</h2>
+      <div class="btn-container">
+        <button class="btn btn-full-width btn-view-details">View Details</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Project Detail View (Initially Hidden) -->
+<section id="projectDetailView" class="project-detail-section" style="display: none;">
+  <button id="backToProjectsBtn" class="btn btn-secondary">← Back to Projects</button>
+  <div id="projectDetailContent">
+    <!-- Dynamic content will be injected here by JavaScript -->
+  </div>
+</section>
+
+<div class="global-back-button-container">
+  <button class="btn btn-secondary" onclick="window.location.href='/index.html'">⬅ Back to Portfolio Home</button>
+</div>
+
+<footer>
+  © 2023 Biraj Kharel. All rights reserved.
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    // --- Project Data ---
+    const projectsData = {
+      energyConsumption: {
+        type: 'data analysis',
+        imageSrc: '../assets/Corelation .png',
+        imageAlt: 'Energy Consumption & Range Detection',
+        title: 'Energy Consumption & Range Detection',
+        summary: 'This project involved a detailed analysis of factors influencing electric vehicle energy consumption. Key correlations were identified to predict vehicle range more accurately under various driving conditions. The findings were published in the IOP Conference Series.',
+        links: [
+          { text: 'Read Full Paper (IOP)', url: 'https://iopscience.iop.org/article/10.1088/1755-1315/1385/1/012024' }
+        ]
+      },
+      crashAnalysis: {
+        type: 'simulation',
+        imageSrc: '../assets/Crash Analysis.png',
+        imageAlt: 'Vehicle Crash Analysis',
+        title: 'Vehicle Frontal Crash Analysis',
+        summary: 'A simulation-based study investigating the structural response of a vehicle chassis during a frontal collision. The analysis focused on deformation patterns, energy absorption, and potential improvements for passenger safety using FEA tools like LS-DYNA.',
+        links: [
+          { text: 'View Detailed Report', url: './crash_analysis.html' }
+        ]
+      },
+      rangeCalculator: {
+        type: 'data analysis',
+        imageSrc: '../assets/Project 1.png',
+        imageAlt: 'Vehicle Range Calculator',
+        title: 'Vehicle Range Calculator Web App',
+        summary: 'Developed an interactive web application allowing users to estimate electric vehicle range based on various parameters like speed, terrain, and battery condition. Built with Python and Streamlit for a user-friendly interface and practical utility.',
+        links: [
+          { text: 'Learn More (Project Page)', url: './range_calculator.html' },
+          { text: 'Live Demo (Streamlit)', url: 'https://electric-vehicle-dashboard.streamlit.app/' }
+        ]
+      },
+      evConversion: {
+        type: 'simulation',
+        imageSrc: '../assets/typical ev architecture.jpg',
+        imageAlt: 'EV Conversion project',
+        title: 'IC Engine Vehicle to EV Conversion: A Feasibility Study',
+        summary: 'This project explored the feasibility of converting a conventional internal combustion engine vehicle into a fully electric vehicle. It involved component selection, powertrain matching simulations, and an analysis of the potential performance and range.',
+        links: [
+          { text: 'Read Project Overview', url: '../projects/ic_to_electric.html' }
+        ]
+      },
+      batteryThermal: {
+        type: 'simulation',
+        imageSrc: '../assets/Battery_Thermal_Management_Figure1--550x392.jpg',
+        imageAlt: 'Battery Thermal Management',
+        title: 'Battery Thermal Management Simulation',
+        summary: 'A CFD simulation study on various cooling strategies for electric vehicle battery packs. The goal was to analyze temperature distribution and identify optimal thermal management techniques to enhance battery life and performance under demanding conditions.',
+        links: [
+          { text: 'Explore Simulation Details', url: '../projects/battery_thermal_management.html' }
+        ]
+      },
+      chassisAnalysis: {
+        type: 'simulation',
+        imageSrc: '../assets/Chassis.png',
+        imageAlt: 'Chassis Analysis',
+        title: 'Structural Analysis on Vehicle Chassis',
+        summary: 'Performed Finite Element Analysis (FEA) on a vehicle chassis to evaluate its structural integrity under various load cases, including bending and torsional stiffness tests. The results helped in identifying areas for design optimization.',
+        links: [
+          { text: 'See Analysis Report', url: '../projects/chassis_analysis.html' }
+        ]
+      },
+      gearDesign: {
+        type: 'data analysis', // Or could be 'tool development' if that's a category
+        imageSrc: '../assets/Gear.png',
+        imageAlt: 'Gear Design Tool',
+        title: 'Automated Gear Design Tool',
+        summary: 'Developed a parametric tool to automate the design process of spur gears. The tool takes basic input parameters and generates key design specifications and a basic 2D profile, streamlining the initial stages of gear manufacturing.',
+        links: [
+          { text: 'Discover the Tool', url: '../projects/gear_design.html' }
+        ]
+      }
+    };
+
+    // --- DOM Elements ---
+    const filterSelect = document.getElementById("filterType");
+    const projectGrid = document.getElementById("projectGrid");
+    const projectCards = projectGrid.querySelectorAll(".details-container"); // Get cards from initial HTML
+    const projectDetailView = document.getElementById("projectDetailView");
+    const projectDetailContent = document.getElementById("projectDetailContent");
+    const backToProjectsBtn = document.getElementById("backToProjectsBtn");
+    const viewDetailsButtons = projectGrid.querySelectorAll(".btn-view-details");
+
+    // --- Filter Logic ---
+    if (filterSelect && projectCards.length > 0) {
+      filterSelect.addEventListener("change", function() {
+        const selectedType = this.value;
+        projectCards.forEach(card => {
+          const cardType = card.getAttribute("data-type");
+          if (!selectedType || cardType === selectedType) {
+            card.style.display = "flex"; // Matches .details-container display
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    }
+
+    // --- Navigation Functions ---
+    function showProjectDetail(projectId) {
+      const project = projectsData[projectId];
+      if (!project) {
+        console.error("Project data not found for ID:", projectId);
+        return;
+      }
+
+      let linksHTML = '<div class="detail-links">';
+      project.links.forEach(link => {
+        linksHTML += `<a href="${link.url}" class="btn" target="_blank" rel="noopener noreferrer">${link.text}</a>`;
+      });
+      linksHTML += '</div>';
+
+      projectDetailContent.innerHTML = `
+        <img src="${project.imageSrc}" alt="${project.imageAlt}">
+        <h2>${project.title}</h2>
+        <p>${project.summary}</p>
+        ${linksHTML}
+      `;
+
+      projectGrid.style.display = "none";
+      filterSelect.parentElement.style.display = "none"; // Hide filters container
+      projectDetailView.style.display = "block";
+      window.scrollTo(0, projectDetailView.offsetTop - 20); // Scroll to detail view
+    }
+
+    function showProjectGrid() {
+      projectDetailView.style.display = "none";
+      projectGrid.style.display = "grid"; // Restore grid display
+      filterSelect.parentElement.style.display = "flex"; // Show filters container
+      window.scrollTo(0, projectGrid.offsetTop - 20); // Scroll to grid view
+    }
+
+    // --- Event Listeners ---
+    viewDetailsButtons.forEach(button => {
+      button.addEventListener("click", function() {
+        const card = this.closest(".details-container");
+        const projectId = card.getAttribute("data-project-id");
+        if (projectId) {
+          showProjectDetail(projectId);
+        }
+      });
+    });
+
+    if (backToProjectsBtn) {
+      backToProjectsBtn.addEventListener("click", showProjectGrid);
+    }
+
+  });
+</script>
+
+</body>
+</html>

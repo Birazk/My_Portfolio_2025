@@ -1,0 +1,1029 @@
+/* GENERAL */
+
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"); */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.header{
+  min-height: 100vh;
+  width: 100%;
+  
+  position: relative;
+}
+
+/* Page Background */
+body {
+  background: linear-gradient(135deg, #f5f8fa, #f2f8f4);
+  min-height: 100vh;
+  color: #333;
+  overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+p {
+    color: rgb(0, 0, 0);
+}
+
+/* TRANSITION */
+
+a,
+.btn {
+    transition: all 300ms ease;
+}
+
+/* DESKTOP NAV */
+
+nav,
+.nav-links {
+  display: flex;
+  gap: 2rem
+}
+
+nav {
+  background-color: #e7eeee;
+  color: #000000;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border-bottom: 10px solid #ddd;  */ 
+  /* The above is used to inster border on the bottom of the nav pannel */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 400;
+  padding: 0.5rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #000000;
+}
+
+/* Parent list item for Dropdown */
+.dropdown-parent {
+  position: relative;
+}
+
+/* Base styling for dropdown */
+.drop-down {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+/* Show dropdown on hover */
+.nav-links > li:hover .drop-down {
+  display: block;
+}
+
+/* Dropdown item styles */
+.drop-down li {
+  width: 100%;
+}
+
+/* Link styling */
+.drop-down li a {
+  display: block;
+  padding: 12px 20px;
+  color: #333333;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+}
+
+/* Hover effect for links */
+.drop-down li a:hover {
+  background-color: #f0f0f0;
+  color: #000000;
+  padding-left: 24px;
+  border-left: 3px solid #6b6e70;
+}
+
+
+/* HAMBURGER MENU */
+
+  #hamburger-nav {
+    display: none;
+    justify-content: space-between;
+    /* flex-direction: column; */
+    align-items: center;
+    padding: 10px 20px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 24px;
+  width: 30px;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger-icon span {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-links {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+} 
+
+.menu-links a {
+  display: block;
+  padding: 10px;
+  text-align: center;
+  font-size: 1rem;
+  color: black;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-links li {
+  list-style: none;
+}
+
+.menu-links.open {
+  display: flex;
+  max-height: 300px;
+}
+
+.hamburger-icon.open span:first-child {
+  transform: rotate(45deg) translate(10px, 5px);
+}
+
+.hamburger-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-icon.open span:last-child {
+  transform: rotate(-45deg) translate(10px, -5px);
+}
+
+.hamburger-icon span:first-child {
+  transform: none;
+}
+
+.hamburger-icon span:first-child {
+  opacity: 1;
+}
+
+.hamburger-icon span:first-child {
+  transform: none;
+}
+
+
+
+/* SECTIONS */
+
+section {
+  padding-top: 4vh;
+  height: 96vh;
+  margin: 0 10rem;
+  box-sizing: border-box;
+  min-height: fit-content;
+}
+
+.section-container {
+  display: flex;
+}
+
+/* PROFILE SECTION */
+
+#profile {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  height: 80vh;
+}
+
+.section__pic-container img {
+  width: 400px;
+  border-radius:0%;
+  /* border: 1px solid #0f0e0e; */
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); */
+}
+
+.section__text {
+  align-self: center;
+  text-align: center;
+}
+
+.section__text p {
+  font-weight: 600;
+}
+
+.section__text__p1 {
+  text-align: center;
+}
+
+.section__text__p2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: #2e2e2e;
+}
+
+#socials-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+
+
+
+/* ICONS */
+
+.icon {
+  cursor: pointer;
+  height: 2rem;
+}
+
+
+
+
+
+/* BUTTONS */
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  margin: 0 0.5rem;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-color-1,
+.btn-color-2 {
+  border: rgb(53, 53, 53) 0.1rem solid;
+}
+
+.btn-color-1:hover,
+.btn-color-2:hover {
+  cursor: pointer;
+}
+
+.btn-color-1,
+.btn-color-2:hover {
+  background: rgb(53, 53, 53);
+  color: white;
+}
+
+.btn-color-1:hover {
+  background: rgb(0, 0, 0);
+}
+
+.btn-color-2 {
+  background: none;
+}
+
+.btn-color-2:hover {
+  border: rgb(255, 255, 255) 0.1rem solid;
+}
+
+/* ABOUT section styling */
+#about {
+  position: relative;
+}
+
+.about-containers {
+  gap: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.about-details-container {
+  justify-content: center;
+  flex-direction: column;
+}
+
+.about-containers,
+.about-details-container {
+  display: flex;
+}
+
+.about-pic {
+  border-radius: 2rem;
+}
+
+.arrow {
+  position: absolute;
+  right: -5rem;
+  bottom: 2.5rem;
+}
+
+.details-container {
+  flex: 1;
+  border-radius: 2rem;
+  border: rgb(53, 53, 53) 0.1rem solid;
+  border-color: rgb(163, 163, 163);
+  text-align: center;
+  background-color: rgb(223, 222, 222);
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin: 1rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.details-container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-containers,
+.text-container {
+  animation: fadeUp 1s ease forwards;
+  opacity: 0;
+}
+
+.about-containers {
+  animation-delay: 0.3s;
+}
+
+.text-container {
+  animation-delay: 0.6s;
+}
+
+.details-container a.timeline-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: #6366f1;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.details-container a.timeline-link:hover {
+  color: #4f46e5;
+  text-decoration: underline;
+  transform: scale(1.05);
+}
+
+/* Timeline link style */
+
+.section-container {
+  gap: 4rem;
+  height: 80%;
+}
+
+.section__pic-container {
+  height: 400px;
+  width: 400px;
+  margin: auto 0;
+}
+
+.container {
+  display: flex;
+  font-size: 14px;
+  height: 100vh;
+  background: #d8d8d8;
+}
+
+
+
+.details-link {
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+}
+
+.about-containers a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+/* SKILLS SECTION */
+
+#experience {
+  position: relative;
+}
+
+.skills-sub-title {
+  color: rgb(85, 85, 85);
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.skills-details-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Background and Section Styling */
+#skills {
+  /* background: linear-gradient(to bottom right, #ffffff, #ffffff); */
+  padding: 4rem 2rem;
+}
+
+/* Container for each skill category */
+
+
+/* Flex/Grid for skill cards */
+.article-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Card style for each skill */
+article {
+  background-color: #b3b3b3;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+article:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Text styling inside article */
+article h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+article p {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Skill icon */
+article .icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.arrow {
+  position: absolute;
+  right: -5rem;
+  bottom: 2.5rem;
+}
+
+/* EXPERIENCE CARDS CONTAINER */
+/* Basic Reset */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+/* Section Styles */
+.timeline-section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+.section__text__p1 {
+  text-align: center;
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+}
+.title {
+  text-align: center;
+  font-size: 42px;
+  color: #111;
+  margin-bottom: 40px;
+}
+
+/* Timeline Container */
+.timeline {
+  position: relative;
+  margin: 0 auto;
+  padding-left: 30px;
+  border-left: 3px solid #222;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 30px;
+  transition: all 0.3s ease;
+}
+.timeline-item:hover .timeline-content {
+  background-color: #fafafa;
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.timeline-dot {
+  position: absolute;
+  left: -12px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  background: #222;
+  border-radius: 50%;
+  z-index: 1;
+}
+.timeline-date {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 5px;
+}
+.timeline-content {
+  background-color: #fff;
+  padding: 20px 25px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+.timeline-content h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 5px;
+}
+.timeline-content h4 {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 12px;
+  font-weight: normal;
+}
+.timeline-content p {
+  font-size: 15px;
+  color: #666;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+/* Responsive Timeline */
+@media (max-width: 768px) {
+  .timeline {
+    border-left: none;
+    padding-left: 0;
+  }
+  .timeline-item {
+    padding-left: 0;
+  }
+  .timeline-dot {
+    display: none;
+  }
+}
+
+/* Buttion media responsive */
+@media (max-width: 768px) {
+    .btn-container {
+        flex-direction: column; /* Stack buttons */
+        gap: 0.75rem;       /* Space between stacked buttons */
+        align-items: center; /* Center buttons if container becomes full width */
+    }
+
+    .btn {
+        padding: 0.8rem 1.5rem; /* Adjust padding for comfortable tapping */
+        width: 80%;          /* Make buttons wider */
+        max-width: 280px;    /* But not excessively wide */
+        font-size: 0.9rem;   /* Adjust font size */
+    }
+}
+
+
+/* =============== MOBILE / RESPONSIVE STYLES =============== */
+@media (max-width: 768px) {
+
+    /* General Body and Section Spacing */
+    body {
+        /* You might not need to change body much if overflow-x is already hidden */
+        /* If hamburger nav is fixed, body needs padding-top to prevent overlap
+           This can be added conditionally or if nav is always fixed on mobile */
+        /* padding-top: 60px; */ /* Example: Adjust to actual height of your fixed hamburger nav */
+    }
+
+    section {
+        margin: 0 1.5rem; /* Reduce side margins significantly */
+        padding-top: 3vh;
+        height: auto;     /* Allow sections to grow with content */
+        min-height: auto; /* Override fixed vh heights if they cause issues */
+    }
+
+    /* Desktop Navigation Hide / Hamburger Navigation Show */
+    #desktop-nav {
+        display: none !important; /* Force hide desktop nav */
+    }
+
+    #hamburger-nav {
+        display: flex; /* Or 'block' depending on its content. 'flex' is good if logo & icon are side-by-side */
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 1.5rem; /* Adjust padding */
+        background-color: #fff; /* Or your nav background, e.g., #e7eeee */
+        color: #000000;
+        width: 100%;     /* Make it full width */
+        position: fixed; /* Makes nav sticky at the top */
+        top: 0;
+        left: 0;
+        z-index: 1001;   /* Ensure it's above other content if fixed, including potential dropdowns */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add shadow if fixed */
+    }
+
+    /* If #hamburger-nav is fixed, body needs padding-top to prevent overlap */
+    /* Apply this rule IF your hamburger nav is fixed.
+       Alternatively, add padding to the first section after the nav. */
+    body {
+        padding-top: 60px; /* Adjust to the actual height of your fixed #hamburger-nav */
+    }
+
+
+    .logo { /* Adjust logo size in hamburger nav if needed */
+        font-size: 1.3rem;
+    }
+
+    /* Hamburger Menu Dropdown Links */
+    .menu-links {
+        top: 100%; /* Position dropdown relative to the hamburger nav height (if nav is e.g., 60px high) */
+        right: 0;
+        left: 0; /* Make it full width */
+        width: 100%;
+        border-radius: 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        background: #fff; /* Ensure background for dropdown */
+        position: absolute; /* Positioned relative to #hamburger-nav or .hamburger-menu */
+        z-index: 1000; /* Below nav if nav is 1001, but above page content */
+    }
+
+    .menu-links a {
+        font-size: 1rem; /* Ensure readable font size in mobile menu */
+        padding: 12px 20px;
+        color: black; /* Ensure link color is visible */
+    }
+
+    /* Profile Section (#profile) */
+    #profile {
+        flex-direction: column; /* Stack image and text vertically */
+        gap: 2rem;          /* Adjust gap */
+        height: auto;       /* Let it adjust to content height */
+        padding-top: 2rem;  /* Adjust padding if nav isn't fixed or for spacing */
+        padding-bottom: 2rem;
+    }
+
+    .section__pic-container {
+        width: 60vw;      /* Make image responsive, e.g., 60% of viewport width */
+        max-width: 250px; /* But not too large */
+        height: auto;
+        margin: 0 auto;   /* Center it */
+    }
+
+    .section__pic-container img {
+        width: 100%;      /* Make image fill its container */
+        height: auto;     /* Maintain aspect ratio */
+        border-radius: 50%; /* If you want it fully circular on mobile too */
+    }
+
+    .section__text {
+        text-align: center; /* Center the text block */
+    }
+
+    .section__text__p1 {
+        font-size: 0.9rem; /* Adjust font size if needed */
+    }
+
+    .section__text__p2 {
+        font-size: 1.25rem; /* Reduce title helper text size */
+        margin-bottom: 0.8rem;
+    }
+
+    .title { /* General title class, might affect other sections too */
+        font-size: 2rem; /* Reduce main title size */
+        text-align: center; /* Ensure titles are centered on mobile */
+    }
+
+    #socials-container {
+        gap: 1.5rem; /* Adjust gap for social icons */
+        justify-content: center; /* Ensure icons are centered */
+    }
+
+    .icon { /* General icon class */
+        height: 2.2rem; /* Slightly larger icons for easier tapping */
+    }
+
+    /* Buttons (.btn-container, .btn) */
+    .btn-container {
+        flex-direction: column; /* Stack buttons */
+        gap: 0.75rem;       /* Space between stacked buttons */
+        align-items: center; /* Center buttons */
+        width: 100%;         /* Allow container to be full width for centering buttons */
+    }
+
+    .btn {
+        padding: 0.8rem 1.5rem; /* Adjust padding for comfortable tapping */
+        width: 80%;          /* Make buttons wider */
+        max-width: 280px;    /* But not excessively wide */
+        font-size: 0.9rem;   /* Adjust font size */
+        margin: 0;           /* Reset horizontal margins if stacking */
+    }
+
+    /* About Section */
+    .about-containers {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .details-container { /* This is used in About and potentially Skills/Projects */
+        padding: 1.5rem;
+        margin: 1rem 0; /* Adjust vertical margin, remove horizontal if parent is full width */
+    }
+
+    .section__pic-container.about-pic-container { /* If you have a specific class for about pic */
+        width: 70vw;
+        max-width: 300px;
+    }
+
+    .arrow { /* Hide or reposition arrows that don't make sense on mobile */
+        display: none;
+    }
+
+    /* Skills Section */
+    .skills-sub-title { /* Also used as .experience-sub-title */
+        font-size: 1.5rem; /* Adjust sub-title size */
+        text-align: center; /* Center sub-titles */
+    }
+
+    .article-container { /* For skill cards */
+        gap: 1rem; /* Adjust gap between skill cards */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Smaller min for cards */
+    }
+
+    article { /* Individual skill card */
+        padding: 1rem; /* Adjust padding inside skill cards */
+        /* Consider stacking icon and text if they are side by side */
+        /* flex-direction: column; */
+        /* align-items: center; */
+        /* text-align: center; */
+    }
+
+    article .icon {
+        /* margin-bottom: 0.5rem; */ /* If stacking icon above text */
+        width: 20px; /* Adjust icon size in articles if needed */
+        height: 20px;
+    }
+
+    /* Timeline / Experience Section */
+    .timeline-section {
+        padding: 40px 0px; /* Reduce side padding, handled by section margin */
+    }
+    .timeline {
+        border-left: none; /* Remove the side border line on mobile */
+        padding-left: 0;   /* Remove padding associated with the line */
+    }
+    .timeline-item {
+        padding-left: 0;   /* Remove padding */
+        margin-bottom: 30px;
+    }
+    .timeline-dot {
+        display: none;     /* Hide the dot on mobile as the line is gone */
+    }
+    .timeline-content {
+        padding: 15px 20px;
+    }
+    .timeline-content h3 {
+        font-size: 1.1rem;
+    }
+    .timeline-content h4 {
+        font-size: 0.9rem;
+    }
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+
+
+    /* Projects Section (if .color-container is used here like in some templates) */
+    /* Your .project-title and .project-btn were already in a media query,
+       this ensures consistency if they are general styles. */
+    .project-title {
+        font-size: 1.1rem;
+    }
+    .project-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+
+    /* Contact Section */
+    #contact {
+        height: auto; /* Allow to grow */
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+    }
+
+    .contact-info-upper-container {
+        flex-direction: column; /* Stack contact items if they are side-by-side */
+        padding: 1rem;
+        margin: 1rem auto;
+        border-radius: 1rem; /* Slightly smaller border radius */
+    }
+
+    .contact-info-container {
+        margin: 0.75rem 0; /* Adjust margin */
+        gap: 0.8rem;
+    }
+
+    .contact-info-container p {
+        font-size: 0.95rem; /* Adjust font size */
+    }
+
+    .email-icon {
+        height: 2rem;
+    }
+
+
+    /* Footer Section */
+    footer {
+        height: auto;
+        padding: 2rem 0; /* Add some padding */
+        margin: 0 1.5rem; /* Consistent with section margins */
+    }
+    footer p {
+        font-size: 0.85rem; /* Adjust font size if needed */
+    }
+
+    /* Responsive Dropdown (from your original CSS, adapted for mobile context) */
+    /* This part was already in a media query in your original CSS.
+       It's included here for completeness if these styles are what you want for the mobile nav's dropdown. */
+    .drop-down { /* Assuming this is for the desktop nav's dropdown, which is hidden */
+                  /* For hamburger menu, .menu-links is the main container */
+        /* If you have sub-dropdowns inside the hamburger menu, this might apply: */
+        position: static;
+        box-shadow: none;
+        min-width: 100%;
+        background: transparent;
+        /* display: block; */ /* Should be controlled by JS or hover/focus on parent for sub-menus */
+        margin: 0;
+    }
+
+    .drop-down li a {
+        padding: 10px 15px;
+        border-left: none;
+        font-size: 0.95rem; /* Keep consistent with other mobile links */
+        /* color: black; */ /* Ensure color is set for mobile menu context */
+    }
+
+    /* If .nav-links is part of hamburger for submenus, this needs context */
+    /* .nav-links > li:hover .drop-down {
+        display: block;
+        margin: 0;
+    } */
+
+} /* End of @media (max-width: 768px) */
+
+/* CONTACT */
+
+#contact {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+}
+
+.contact-info-upper-container {
+  display: flex;
+  justify-content: center;
+  border-radius: 2rem;
+  border: rgb(53, 53, 53) 0.1rem solid;
+  border-color: rgb(163, 163, 163);
+  background: rgb(250, 250, 250);
+  margin: 2rem auto;
+  padding: 0.5rem;
+}
+
+.contact-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem;
+}
+
+.contact-info-container p {
+  font-size: larger;
+}
+
+.contact-icon {
+  cursor: default;
+}
+
+.email-icon {
+  height: 2.5rem;
+}
+
+/* FOOTER SECTION */
+
+footer {
+  height: 26vh;
+  margin: 0 1rem;
+}
+
+footer p {
+  text-align: center;
+}
+
+/* NEW: Project Tags Styling */
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0;
+}
+
+.tag {
+  background-color: #e0f7fa;
+  color: #00796b;
+  padding: 0.3rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

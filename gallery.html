@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Interactive Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-text: #333333; /* Dark gray for text */
+      --secondary-text: #555555;
+      --accent-color: #bdc6cf; /* A modern blue, or choose your own */
+      --bg-main: #c3d1e6;     /* Very light gray page background */
+      --bg-card: #ffffff;      /* White for cards */
+      --border-light: #e0e0e0; /* Light border color */
+      --shadow-soft: rgba(0,0,0,0.06);
+      --shadow-medium: rgba(0,0,0,0.1);
+      --gutter: 16px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: var(--bg-main); /* Solid light background */
+      color: var(--primary-text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    #gallery {
+      max-width: 1100px; /* Slightly wider for more space */
+      margin: 0 auto;
+      padding: 3rem 1rem; /* Adjusted padding */
+      text-align: center;
+    }
+    #gallery h2 {
+      font-size: 2.2rem; /* Slightly smaller, more refined */
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: var(--primary-text); /* Dark text for light background */
+    }
+    .filter-buttons {
+      margin-bottom: 2.5rem; /* More space below filters */
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      color: var(--secondary-text);
+      padding: 0.6rem 1.2rem; /* Slightly more padding */
+      margin: 0; /* Gap handles spacing */
+      border-radius: 20px; /* Pill shape */
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--accent-color);
+      color: var(--bg-card);
+      border-color: var(--accent-color);
+      box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2);
+    }
+    .gallery-container {
+      position: relative; /* For Masonry */
+    }
+    .gallery-item {
+      width: calc(33.333% - var(--gutter));
+      margin-bottom: var(--gutter);
+      background: var(--bg-card);
+      border-radius: 10px; /* Slightly more rounded */
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #f0f0f0; /* Very subtle border */
+      box-shadow: 0 1px 3px var(--shadow-soft); /* Subtle initial shadow */
+    }
+    @media (max-width: 900px) {
+      .gallery-item { width: calc(50% - var(--gutter)); }
+    }
+    @media (max-width: 600px) {
+      .gallery-item { width: 100%; }
+    }
+    .gallery-item:hover {
+      transform: translateY(-4px) scale(1.01); /* Subtle lift and scale */
+      box-shadow: 0 5px 15px var(--shadow-medium); /* Enhanced shadow on hover */
+    }
+    .gallery-item img {
+      width: 100%; display: block; cursor: pointer;
+      transition: transform 0.4s ease-out; /* Smoother image transition */
+      aspect-ratio: 4/3; /* Common aspect ratio, adjust if needed */
+      object-fit: cover; /* Ensures image covers the area */
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05); /* Slight zoom on image container hover */
+    }
+    .caption {
+      padding: 1rem 1.25rem; /* More padding in caption */
+      text-align: left;
+    }
+    .caption h3 {
+      margin: 0 0 0.2rem;
+      font-size: 1rem; /* Refined font size */
+      font-weight: 600;
+      color: var(--primary-text);
+    }
+    .caption p {
+      margin: 0;
+      font-size: 0.85rem; /* Smaller caption description */
+      color: var(--secondary-text);
+      line-height: 1.5;
+    }
+    #lightbox {
+      position: fixed; top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(30,30,30,0.92); /* Darker, slightly more opaque overlay */
+      display: none;
+      align-items: center; justify-content: center;
+      z-index: 1000;
+      padding: 20px; /* Add padding for smaller screens */
+      cursor: pointer; /* Indicate whole area is clickable to close */
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90vh; /* Slightly more vertical room */
+      border-radius: 8px; /* Match item radius */
+      box-shadow: 0 0 40px rgba(0,0,0,0.5); /* Shadow against the dark overlay */
+      cursor: default; /* Prevent double cursor change */
+    }
+
+    /* Button Styles (for Back to Home) */
+    .btn-container-global {
+        text-align: center;
+        margin: 3rem 0 2rem; /* Adjusted margins */
+    }
+    .btn {
+      font-family: "Poppins", sans-serif; /* Ensure font consistency */
+      padding: 0.7rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid var(--border-light);
+      border-radius: 25px; /* Pill shape */
+      background-color: var(--bg-card);
+      color: var(--secondary-text);
+      cursor: pointer;
+      text-decoration: none; /* If used as <a> */
+      display: inline-block;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    .btn:hover {
+      background-color: var(--primary-text);
+      color: var(--bg-card);
+      border-color: var(--primary-text);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px var(--shadow-medium);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: auto; /* Pushes footer to bottom */
+      font-size: 0.8rem;
+      color: #a0a0a0; /* Lighter footer text */
+      padding: 1.5rem 1rem;
+      border-top: 1px solid #ebebeb;
+    }
+  </style>
+</head>
+<body>
+  <section id="gallery">
+    <h2>My Collections</h2> <!-- Simplified title -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="3d">3D Models</button>
+      <button class="filter-btn" data-filter="photo">Photography</button>
+      <!-- Add more filters if needed -->
+    </div>
+    <div class="gallery-container">
+      <!-- Gallery items will be injected by JavaScript -->
+    </div>
+  </section>
+
+  <div id="lightbox" onclick="closeAndStopPropagation(event)"> <!-- Pass event to new function -->
+    <img id="lightbox-img" src="" alt="Preview" onclick="event.stopPropagation()"> <!-- Stop img click from closing -->
+  </div>
+
+  <!-- Dependencies for Masonry -->
+  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { // Wrap in DOMContentLoaded
+      const itemsData = [
+        { src: 'gallery/shell eco front.jpg', category: 'photo', title: 'Front Profile', desc: 'Shell Eco Marathon 2022, Indonesia' },
+        { src: 'gallery/shell eco side.jpg', category: 'photo', title: 'Junkiri EV', desc: 'Team Spirit, KU' },
+        { src: 'gallery/Gear_box_design.png', category: '3d', title: 'Gear Box Design', desc: 'CAD Model' },
+        { src: 'gallery/1967 shelby.png', category: '3d', title: '1967 Shelby GT500', desc: 'Aerodynamic Concept' },
+        { src: 'gallery/Sword_Stone_Bg.png', category: '3d', title: 'Excalibur', desc: 'Blender Model' },
+        { src: 'gallery/Wall_E.PNG', category: '3d', title: 'Wall-E', desc: 'The Last Robot on Earth' },
+        { src: 'gallery/Rendered Robot 1.4.jpg', category: '3d', title: 'The Tin Man', desc: 'Searching for a Heart' },
+        { src: 'gallery/Mintendo Model.png', category: '3d', title: 'Nintendo Switch', desc: 'Product Model' },
+        { src: 'gallery/Flag_Pole Mount.png', category: '3d', title: 'Flag Pole Mount', desc: 'Mechanical Design' },
+        { src: 'gallery/Robotic arm.png', category: '3d', title: 'Robotic Arm Concept', desc: 'Industrial Design' },
+        { src: 'gallery/HeadPhoone.png', category: '3d', title: 'Headphone Concept', desc: 'Product Visualization' },
+        { src: 'gallery/Boat.jpg', category: 'photo', title: 'Boats on Phewa Lake', desc: 'Pokhara, Nepal' },
+        { src: 'gallery/Ku ground.jpg', category: 'photo', title: 'Kathmandu University', desc: 'Dhulikhel Campus' },
+        { src: 'gallery/mahakali pul.jpg', category: 'photo', title: 'Border Bridge', desc: 'Nepal-India Border' },
+      ];
+
+      const container = document.querySelector('.gallery-container');
+      if (!container) {
+          console.error('Gallery container not found!');
+          return;
+      }
+
+      itemsData.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'gallery-item';
+        div.dataset.category = item.category;
+        div.innerHTML = `
+          <img src="${item.src}" alt="${item.title}" loading="lazy" onclick="openLightbox('${item.src}')">
+          <div class="caption">
+            <h3>${item.title}</h3>
+            <p>${item.desc}</p>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      let msnry;
+      const imgLoad = imagesLoaded(container);
+
+     imgLoad.on('always', () => {
+        msnry = new Masonry(container, {
+          itemSelector: '.gallery-item',
+          columnWidth: '.gallery-item', // <--- UNCOMMENTED THIS LINE
+          percentPosition: true,
+          gutter: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--gutter').trim()) || 16,
+          initLayout: true
+        });
+      });
+
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.dataset.filter;
+          document.querySelectorAll('.gallery-item').forEach(item => {
+            // Use a class to hide/show for better performance with Masonry
+            if (filter === 'all' || item.dataset.category === filter) {
+              item.style.display = 'block'; // Or remove a 'hidden' class
+            } else {
+              item.style.display = 'none'; // Or add a 'hidden' class
+            }
+          });
+          if (msnry) msnry.layout(); // Re-layout Masonry
+        });
+      });
+    }); // End of DOMContentLoaded
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(src) {
+      if (lightbox && lightboxImg) {
+        lightboxImg.src = src;
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent body scroll when lightbox is open
+      }
+    }
+    function closeLightbox() {
+      if (lightbox) {
+        lightbox.style.display = 'none';
+        lightboxImg.src = ''; // Clear src to prevent loading old image if reopened quickly
+        document.body.style.overflow = 'auto'; // Restore body scroll
+      }
+    }
+    // Modified close function to prevent image click from closing
+    function closeAndStopPropagation(event) {
+        if (event.target === lightbox) { // Only close if the backdrop itself is clicked
+            closeLightbox();
+        }
+    }
+
+  </script>
+
+  <div class="btn-container-global"> <!-- Wrapped button in a container -->
+    <a href="/index.html" class="btn">⬅ Back to Home</a> <!-- Used <a> for semantic navigation -->
+  </div>
+
+  <footer>
+    © 2025 Biraj Kharel. All rights reserved.
+  </footer>
+
+</body>
+</html>

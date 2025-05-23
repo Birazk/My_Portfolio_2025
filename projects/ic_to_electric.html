@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Report: IC Engine to Electric Vehicle Conversion - Biraj Kharel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2c3e50; /* Dark Blue/Gray */
+      --secondary-color: #3498db; /* Bright Blue */
+      --accent-color: #1abc9c;   /* Teal/Green */
+      --light-gray: #f4f6f8;
+      --medium-gray: #bdc3c7;
+      --dark-gray: #7f8c8d;
+      --text-color: #34495e;
+      --card-bg: #ffffff;
+      --shadow: 0 5px 15px rgba(0,0,0,0.1);
+      --border-radius: 8px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-gray);
+      color: var(--text-color);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header.main-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    header.main-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    header.main-header .subtitle {
+      font-size: 1.2rem;
+      color: var(--medium-gray);
+      font-weight: 300;
+    }
+    .university-info {
+        font-size: 0.9rem;
+        color: var(--medium-gray);
+        margin-top: 15px;
+    }
+
+    .section {
+      background-color: var(--card-bg);
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+    .section h2 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--secondary-color);
+      font-weight: 600;
+    }
+    .section h3 {
+      font-size: 1.4rem;
+      color: var(--secondary-color);
+      margin-top: 25px;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+    .section h4 {
+        font-size: 1.1rem;
+        color: var(--primary-color);
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+
+    p, ul li, ol li {
+      margin-bottom: 15px;
+      color: var(--text-color);
+    }
+    ul, ol { padding-left: 25px; }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    strong { font-weight: 600; color: var(--primary-color); }
+
+    .team-members {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #eef2f7;
+        border-left: 5px solid var(--accent-color);
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+    .team-members h3 { margin-top: 0; color: var(--primary-color); }
+    .team-members ul { list-style-type: none; padding-left: 0; }
+    .team-members li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed var(--medium-gray); }
+    .team-members li:last-child { border-bottom: none; }
+
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .image-gallery img, .single-image img, .flowchart-container img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--border-radius);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: white; /* For images with transparent backgrounds */
+    }
+    .image-gallery img:hover, .single-image img:hover, .flowchart-container img:hover {
+        transform: scale(1.03);
+        box-shadow: var(--shadow);
+    }
+    .image-caption {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--dark-gray);
+      margin-top: 8px;
+      margin-bottom: 15px; /* Add some space below captions */
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+    .spec-table caption {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+        text-align: left;
+    }
+    .spec-table th, .spec-table td {
+      text-align: left;
+      padding: 10px 12px; /* Adjusted padding */
+      border: 1px solid #ddd; /* Full borders for clarity */
+    }
+    .spec-table th {
+      background-color: #e9ecef; /* Lighter header */
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    .spec-table tr:nth-child(even) { background-color: #f8f9fa; } /* Zebra striping */
+
+    .tools-list {
+        columns: 2; /* Display tools in two columns for better readability */
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        column-gap: 30px;
+    }
+    .tools-list li { margin-bottom: 8px; }
+
+
+    .flowchart-container { /* For methodology flowchart */
+      margin: 20px auto;
+      display: block;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    .conclusion-points li {
+      padding-left: 20px;
+      position: relative;
+    }
+    .conclusion-points li::before {
+      content: '✓';
+      color: var(--accent-color);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .back-link-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .back-link {
+      display: inline-block;
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .back-link:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: var(--primary-color);
+      color: var(--medium-gray);
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+    footer p { margin-bottom: 0; color: var(--medium-gray); }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header.main-header h1 { font-size: 2.2rem; }
+      header.main-header .subtitle { font-size: 1rem; }
+      .section h2 { font-size: 1.6rem; }
+      .section h3 { font-size: 1.2rem; }
+      .section h4 { font-size: 1.0rem; }
+      .image-gallery { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+      .tools-list { columns: 1; -webkit-columns: 1; -moz-columns: 1; }
+      .spec-table th, .spec-table td { padding: 8px 10px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <h1>IC Engine to Battery-Electric Vehicle Conversion</h1>
+    <p class="subtitle">Project Sustainable Transportation Innovation</p>
+    <div class="university-info">
+      Kathmandu University | Department of Mechanical Engineering | School of Engineering <br>
+      May 3, 2022
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="section project-summary">
+      <h2>Project Abstract</h2>
+      <p>The escalating carbon emissions from internal combustion (IC) engine vehicles contribute significantly to global warming and degrade environmental quality. This project addresses this issue by exploring the conversion of a conventional IC engine vehicle, a Maruti Suzuki 800, into a Battery-Electric Vehicle (BEV). The conversion involves removing the IC engine and related components, replacing them with an electric traction motor, lead-acid battery pack, and associated electrical systems, while retaining the existing gearbox. A MATLAB/Simulink model was developed for virtual testing and analysis before physical conversion. The successfully converted vehicle demonstrates technical feasibility, adaptation of new technology, and promotes reuse within Nepal's transportation sector.</p>
+      <strong>Keywords:</strong> IC engine, battery electric vehicle, Maruti Suzuki 800, conversion, traction motor, lead-acid battery, MATLAB/Simulink.
+
+    <section class="section introduction">
+      <h2>1. Introduction & Significance</h2>
+      <p>The global reliance on fossil fuels for transportation has led to severe environmental pollution and increasing fuel costs. Nepal, with nearly 99.9% of its transport sector dependent on petroleum fuels, faces a critical need for cleaner alternatives. Electric vehicles (EVs) present a viable solution. This project focuses on the conversion of an existing IC engine vehicle, specifically a Maruti 800, into an EV (Phase I), with the long-term goal of integrating a Hydrogen Fuel Cell (HFC) system (Phase II). This approach not only addresses environmental concerns but also explores the potential for reusing older vehicles, offering economic benefits.</p>
+      <h3>1.1 Objectives (As per Report)</h3>
+      <ol>
+        <li>To conduct a detailed study on HFCT, its applications in vehicles, and the disassembly of IC engine vehicles along with necessary safety protocols.</li>
+        <li>To disassemble the car as per requirements and modify the standard IC Engine chassis for the necessary conversion to an FCEV (initially BEV).</li>
+      </ol>
+      <h3>1.2 Significance for Nepal</h3>
+      <ul>
+        <li>Paves the way for pilot-scale testing of alternative fuel transportation systems.</li>
+        <li>Supports local production and storage of green hydrogen (long-term goal).</li>
+        <li>Reduces fossil fuel import dependency and promotes local technological adaptation.</li>
+      </ul>
+      <h3>1.3 Advantages of BEV Conversion</h3>
+      <ul>
+          <li>Economically cheaper in operating phase.</li>
+          <li>Reuses an old IC vehicle, reducing waste.</li>
+          <li>Zero tailpipe emissions and significantly reduced noise pollution.</li>
+          <li>Eliminates the need for a water cooling system typical of IC engines.</li>
+      </ul>
+       <h3>1.4 Limitations Noted</h3>
+      <ul>
+        <li>The chassis was not completely remodeled, aiming to fit FCEV (future) / BEV (current) components within existing constraints, potentially not achieving a 100% optimized modified chassis.</li>
+        <li>Potential structural stability issues arising from modifications would be addressed post-simulations and further assessments.</li>
+        <li>Economic analysis was not the primary focus of this demonstration project; a techno-economic part would follow.</li>
+      </ul>
+    </section>
+
+    <section class="section methodology">
+        <h2>2. Methodology & Conversion Process</h2>
+        <p>The conversion process adopted a systematic approach, encompassing design, calculation, simulation, component selection, disassembly, and assembly of the electric drivetrain. The overall methodology is depicted below:</p>
+        <div class="flowchart-container">
+            <img src="../project_pics/bev methodology.jpg" alt="Overall Project Methodology Flowchart">
+            <p class="image-caption">Overall Project Methodology Flowchart</p>
+        </div>
+
+        <h3>2.1 Selected Vehicle: Maruti Suzuki 800 Specifications</h3>
+        <table class="spec-table">
+          <caption>Table 1: Technical specification of Maruti 800 [4]</caption>
+          <thead><tr><th colspan="2">Dimensions & Weights</th></tr></thead>
+          <tbody>
+            <tr><td>Length × width × Height</td><td>3335mm × 1440mm × 1405mm</td></tr>
+            <tr><td>Wheel base</td><td>2175mm</td></tr>
+            <tr><td>Track: Front / Rear</td><td>1295mm / 1290mm</td></tr>
+            <tr><td>Curb Weight (Original)</td><td>650kgs</td></tr>
+            <tr><td>Ground Clearance</td><td>170mm</td></tr>
+            <tr><td>Turning Radius</td><td>4.4m</td></tr>
+            <tr><td>Seating Capacity</td><td>5</td></tr>
+            <tr><td>Fuel Tank Capacity (Original)</td><td>28 liters</td></tr>
+          </tbody>
+          <thead><tr><th colspan="2">Original Engine Details</th></tr></thead>
+          <tbody>
+            <tr><td>Type</td><td>Water cooled SOHC petrol</td></tr>
+            <tr><td>Displacement</td><td>796cc</td></tr>
+            <tr><td>Cylinders</td><td>3</td></tr>
+            <tr><td>Valve trains</td><td>2 valves / cylinders</td></tr>
+            <tr><td>Bore and Stroke</td><td>68.5mm × 72.0mm</td></tr>
+            <tr><td>Max power (Original)</td><td>37 BHP @ 5000 rpm</td></tr>
+            <tr><td>Max torque (Original)</td><td>59Nm @ 2500 rpm</td></tr>
+          </tbody>
+          <thead><tr><th colspan="2">Original Suspension & Brakes</th></tr></thead>
+          <tbody>
+            <tr><td>Front suspension</td><td>McPherson strut w/coil spring</td></tr>
+            <tr><td>Rear suspension</td><td>Coil springs w/gas field shock absorbers</td></tr>
+            <tr><td>Tyre size</td><td>145/70 R12</td></tr>
+            <tr><td>Brakes: Front/Rear</td><td>Disk/Drum</td></tr>
+          </tbody>
+        </table>
+
+        <h3>2.2 Selected Electric Components for BEV Conversion</h3>
+        <table class="spec-table">
+          <caption>Table 2: Selected Electric Components</caption>
+          <thead><tr><th>S.N.</th><th>Component</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>DC Motor</td><td>Brushed DC Motor model k91-4003. Single shaft, 72-144V, 8-22hp. Max torque: 38.5Nm @ 3000RPM.</td></tr>
+            <tr><td>2</td><td>Lead Acid Battery</td><td>6 individual 12V batteries in series. Total: 72V, 100Ah capacity.</td></tr>
+            <tr><td>3</td><td>Motor Controller</td><td>Curtis PMC 1209-6401. Voltage range: 48-72V, 400A. Control input: 0-5K ohms.</td></tr>
+            <tr><td>4</td><td>Potentiometer/Throttle</td><td>Curtis PB-6 with resistance of 0-5K ohms.</td></tr>
+            <tr><td>5</td><td>Molded Case Circuit Breaker (MCCB)</td><td>Used between battery and power controller for overcurrent protection. (e.g., LSM1 203b, 200A)</td></tr>
+            <tr><td>6</td><td>Forward-Reverse Switch</td><td>Mechanical lever switch to change motor direction.</td></tr>
+            <tr><td>7</td><td>GPS Module (Auxiliary)</td><td>Teltonika FMB 920 for tracking velocity and distance (powered by auxiliary battery).</td></tr>
+          </tbody>
+        </table>
+        <!-- <div class="image-gallery">
+             <figure><img src="REPLACE_WITH_DC_MOTOR_FIG2.png" alt="Figure 2: Electric DC motor"><figcaption class="image-caption">Figure 2: Electric DC Motor</figcaption></figure>
+            <figure><img src="REPLACE_WITH_BATTERY_FIG3.png" alt="Figure 3: Lead acid battery pack"><figcaption class="image-caption">Figure 3: Lead-Acid Battery Pack</figcaption></figure>
+            <figure><img src="REPLACE_WITH_CONTROLLER_FIG4.png" alt="Figure 4: Motor controller"><figcaption class="image-caption">Figure 4: Motor Controller</figcaption></figure>
+            <figure><img src="REPLACE_WITH_THROTTLE_FIG5.png" alt="Figure 5: Potentiometer/throttle"><figcaption class="image-caption">Figure 5: Throttle (Potentiometer)</figcaption></figure>
+            <figure><img src="REPLACE_WITH_MCCB_FIG6.png" alt="Figure 6: MCCB"><figcaption class="image-caption">Figure 6: Molded Case Circuit Breaker</figcaption></figure>
+            <figure><img src="REPLACE_WITH_FR_SWITCH_FIG7.png" alt="Figure 7: Forward-Reverse Switch"><figcaption class="image-caption">Figure 7: Forward-Reverse Switch</figcaption></figure>
+        </div> -->
+
+        <h3>2.3 Vehicle Disassembly: Steps & Precautions</h3>
+        <p>The vehicle disassembly followed a structured flow to ensure safety and systematic removal of IC components.</p>
+        <div class="flowchart-container">
+            <img src="/project_pics/vehicle dismantling.jpg" alt="Vehicle Disassembly Flow Chart">
+            <p class="image-caption">Vehicle Disassembly Flow Chart</p>
+        </div>
+        <h4>Key Disassembly Stages:</h4>
+        <ol>
+            <li><strong>Vehicle Setup:</strong> Placed on hydraulic lift, stability ensured. Initial checks for leaking fluids. (Ref: Fig 9)</li>
+            <li><strong>Battery Disconnection:</strong> Battery disconnected, dismounted, and removed. Seals checked for leakage. Safety: Eliminate electrical power sources, clean acid spills immediately. (Ref: Fig 10)</li>
+            <li><strong>Fuel System Removal:</strong> Fuel tank secured with hydraulic jack, hoses and wiring disconnected, tank and pump/gauge removed. Safety: Wear glasses/gloves, unbolt tank strap, prefer disassembly before emptying if possible. (Ref: Fig 11)</li>
+            <li><strong>Oils Removal:</strong> Engine and gearbox oil drained into a catch basin. Absorbent used for spills. (Ref: Fig 12)</li>
+            <li><strong>Mechanical Components Removal:</strong>
+                <ul>
+                    <li><strong>Radiator System:</strong> Coolant supply unbolted, temperature sensor and fan connections removed. Catch basin used for coolant. (Ref: Fig 13)</li>
+                    <li><strong>Connecting Cables:</strong> Brake, chock, accelerator, clutch cables disconnected. (Ref: Fig 14)</li>
+                    <li><strong>Alternator:</strong> Wiring and belt disconnected, then alternator unbolted. (Ref: Fig 15)</li>
+                    <li><strong>Engine Mounts:</strong> Side mounts removed before center mount. Coupling from gearbox disconnected. Vehicle raised on jack stands for tire/suspension access if needed. (Ref: Fig 16)</li>
+                    <li><strong>Engine & Gearbox Assembly:</strong> All mounts supporting engine disconnected, entire engine and gearbox assembly removed. (Ref: Fig 17)</li>
+                    <li><strong>Exhaust System:</strong> Oxygen sensor disconnected, manifold and system removed. Safety: PPE, secure vehicle, use PB blaster for rusted bolts. (Ref: Fig 18)</li>
+                </ul>
+            </li>
+        </ol>
+        <div class="single-image">
+             <img src="../project_pics/maruti disassembled.jpg" alt="Figure 19: Vehicle after disassembly">
+            <p class="image-caption">Figure 19: Vehicle after complete IC component disassembly</p>
+        </div>
+
+        <h3>2.4 Specific Tools Required for Conversion</h3>
+        <p>A range of tools were essential for the disassembly and assembly process:</p>
+        <ul class="tools-list">
+            <li>Pliers, Screwdrivers</li>
+            <li>Multimeter (if required)</li>
+            <li>Wrench set, Rubber mallet</li>
+            <li>Battery clamps</li>
+            <li>Hydraulic lift, Hoisting equipment</li>
+            <li>Wheeled charger</li>
+            <li>Dismantling table, Axle stands</li>
+            <li>Chains, Suitable hose clamps</li>
+            <li>Spill kit, Powder extinguisher</li>
+            <li>Hydraulic jack, Removable support table</li>
+            <li>Hydraulic jack and hoist, Engine crane</li>
+            <li>Absorbent material</li>
+            <li>Ratchet set, Jack stand</li>
+            <li>Wheeled workbench</li>
+            <li>Reciprocating saw (if needed for modifications)</li>
+        </ul>
+    </section>
+    <!-- ... (Keep other sections: CAD Design & MATLAB Simulation, Performance, Results & Discussion, Safety Measures & Future Work, Conclusion & Budget) ... -->
+    <section class="section design-simulation">
+      <h2>3. CAD Design & MATLAB Simulation</h2>
+      <h3>3.1 CAD Modeling</h3>
+      <p>SolidWorks was used for 3D modeling and 2D drawings of the project car, visualizing the placement of new components and ensuring fit. The steering system was excluded from some views for clarity.</p>
+      <div class="image-gallery">
+        <figure>
+            <img src="../project_pics/isometric car.png" alt="Figure 20: Isometric view of outer body 3D model">
+            <figcaption class="image-caption">Figure 20: Isometric 3D Model of Outer Body</figcaption>
+        </figure>
+        <figure>
+            <img src="../project_pics/vehicle interior.png" alt="Figure 21: Interior of project car after conversion">
+            <figcaption class="image-caption">Figure 21: CAD Model: Interior Layout after Conversion</figcaption>
+        </figure>
+         <figure>
+            <img src="../project_pics/top view.png" alt="Figure 22: Top view of chassis after conversion">
+            <figcaption class="image-caption">Figure 22: CAD Model: Top View of Chassis Layout</figcaption>
+        </figure>
+      </div>
+
+      <h3>3.2 Load Calculations & Force Calculation for BEV</h3>
+      <p>Prior to simulation, load and force calculations were performed:</p>
+      <ul>
+          <li>Vehicle weight without Engine components: 540kg</li>
+          <li>Payload: 360kg</li>
+          <li>Motor weight: 25kg</li>
+          <li>Battery weight: 195kg</li>
+          <li>Transmission weight: 30kg</li>
+          <li>Controller weight: 5kg</li>
+          <li><strong>Total Converted Vehicle Weight: 1155kg</strong></li>
+      </ul>
+      <p>Forces considered: Aerodynamic drag (Cd=0.4, ρ=1.225 kg/m³), Rolling resistance (μ=0.01), Acceleration force (0-50km/hr in 6sec, a=1.388m/s²). Total tractive force (Ft) calculated as 1811.79 N.</p>
+      <p>Total maximum power (Pt = Ft * v) calculated as 15092.21 Watts (approx. 15.1 kW).</p>
+
+
+      <h3>3.3 MATLAB/Simulink Model</h3>
+      <p>A Simulink model was developed using Simscape blocks to simulate vehicle dynamics, including battery state of charge (SOC), distance traveled, and speed. The WLTC drive cycle was used as input to evaluate how the designed vehicle reacts.</p>
+        <div class="single-image">
+            <img src="../project_pics/simulink.png" alt="Figure 28: Simulink Model of Vehicle">
+            <p class="image-caption">Overall Simulink Vehicle Model</p>
+        </div>
+        <h4>Key Subsystems in Simulink Model:</h4>
+        <ul>
+            <li><strong>Vehicle Subsystem:</strong> Includes differential, tire model, vehicle body, longitudinal force sensor. Models FWD system, wind velocity (1m/s), inclination.</li>
+            <li><strong>Power Controller Subsystem :</strong> Creates voltage signals to control motor speed based on drive cycle data. Uses controlled PWM voltage block, H-bridge (to change polarity for forward/reverse), and current sensor. Output voltage parameter set to 72V.</li>
+            <li><strong>Battery Subsystem :</strong> Models battery as series internal resistance and constant voltage source. Uses Lead-Acid type, 72V nominal, 100Ah capacity, 98% initial SOC.</li>
+            <li><strong>Motor and Gear Subsystem :</strong> DC motor block converts electrical to mechanical energy. Simple gearbox with fixed gear ratio (2.16) connects motor to axle. Motor parameters: noload_speed=3800rpm, rated_speed=3000rpm, rated_load=6 (unit not specified, likely Nm or kW), rated_voltage=72V.</li>
+        </ul>
+    </section>
+
+    <section class="section results-discussion">
+      <h2>4. Performance, Results & Discussion</h2>
+      <h3>4.1 Simulation Results (WLTC Drive Cycle)</h3>
+      <ul class="conclusion-points">
+        <li><strong>Drive Cycle:</strong> WLTC, Simulation Time: 1776 seconds (approx. 30 mins).</li>
+        <li><strong>Max Speed Gain by Vehicle (Simulated):</strong> 35 km/hr (in line with WLTC profile).</li>
+        <li><strong>Initial SOC:</strong> 98%.</li>
+        <li><strong>Final SOC:</strong> 89.59% (8.49% battery used).</li>
+        <li><strong>Distance Covered:</strong> Approximately 6.9 km.</li>
+        <li><strong>Steady Current (Constant Speed in Simulation):</strong> 83A.</li>
+      </ul>
+      <div class="image-gallery">
+        <figure>
+            <img src="../project_pics/Output Velocity to Input Velocity graph.png" alt="Figure 33: Output Velocity to Input Velocity graph">
+            <figcaption class="image-caption"> Simulated Velocity Profile vs. Drive Cycle</figcaption>
+        </figure>
+        <figure>
+            <img src="../project_pics/State of Batter.jpg" alt="Figure 34: State of Charge of Battery graph">
+            <figcaption class="image-caption"> Battery State of Charge (SOC) Over Time</figcaption>
+        </figure>
+        <figure>
+            <img src="../project_pics/Current vs Time graph.png" alt="Figure 35: Current vs Time graph">
+            <figcaption class="image-caption"> Battery Current Over Time</figcaption>
+        </figure>
+      </div>
+
+      <h3>4.2 On-Road Performance & Observations</h3>
+      <ul class="conclusion-points">
+        <li><strong>Max Speed (Observed):</strong> Approx. 50 km/hr on plain roads (higher than WLTC simulation due to different driving conditions).</li>
+        <li><strong>Charging Time:</strong> 6-7 hours for 6 batteries (charged two at a time).</li>
+        <li><strong>Driving Feel:</strong> Reported as safer and easier, with less driving effort compared to the original IC engine.</li>
+        <li><strong>Gear:</strong> The car was set at a single speed gear (equivalent to 2nd gear). For gear shifting, the original gear lever system would need to be re-fitted and integrated.</li>
+        <li><strong>Challenges:</strong> The bulk size and weight of lead-acid batteries increased the vehicle's gross weight, with a noticeable load increase at the rear. Using a more powerful motor could enhance performance.</li>
+      </ul>
+      <div class="image-gallery">
+          <figure>
+            <img src="../project_pics/Converted Vehicle - Front View.jpg" alt="Figure 36: Assembled Vehicle Front View">
+            <figcaption class="image-caption">Figure 36: Converted Vehicle - Front View</figcaption>
+          </figure>
+          <figure>
+            <img src="../project_pics/Converted Vehicle - Rear View.jpg" alt="Figure 37: Assembled Vehicle Back View (Batteries)">
+            <figcaption class="image-caption">Figure 37: Converted Vehicle - Rear View (Battery Placement)</figcaption>
+          </figure>
+      </div>
+    </section>
+
+    <section class="section safety-future">
+        <h2>5. Safety Measures & Future Work</h2>
+        <h3>5.1 Safety Measures Implemented during BEV Conversion</h3>
+        <ul class="conclusion-points">
+            <li>Control of naked flames and spark sources.</li>
+            <li>Procedures for waste management (used oils, tires, batteries, etc.).</li>
+            <li>Elimination of all sources of electrical power to prevent sparks during work.</li>
+            <li>Quick cleanup of any accidental acid contact.</li>
+            <li>Securing and verifying vehicle balance, especially with weight changes from part removal.</li>
+            <li>Use of Personal Protective Equipment (gloves, glasses, protective footwear).</li>
+            <li>Placing tires under the vehicle body for safety during work.</li>
+            <li>Using PB blaster for rusted bolts for easier removal.</li>
+        </ul>
+    </section>
+
+    <section class="section conclusion-budget">
+        <h2>6. Conclusion & Budget</h2>
+        <h3>6.1 Conclusion</h3>
+        <p>The IC engine Maruti 800 was successfully converted into a battery-electric vehicle exhibiting good performance. Vehicle performance was influenced by factors such as battery type and size, motor power, and vehicle type. The bulk size of lead-acid batteries increased the gross vehicle weight, and more load was observed at the rear side of the car. A more powerful motor could be used for better performance. This project has demonstrated the technical feasibility of such conversions and, with further implementation, could be fruitful and beneficial in terms of economic savings, fuel cost reduction, and the reuse of similar old vehicles in Nepal.</p>
+    </section>
+
+
+    <div class="back-link-container">
+      <a href="../projects.html" class="back-link">← Back to All Projects</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2023 Biraj Kharel. All rights reserved.</p>
+    <p>Project information adapted from the Final Project Report, Kathmandu University, May 3, 2022.</p>
+  </footer>
+
+</body>
+</html>
